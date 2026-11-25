@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #fff8dc;
+  background-image: radial-gradient(circle, rgba(37, 36, 58, 0.11) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+}
+
+::selection {
+  background: #25243a;
+  color: white;
+}
+
+:focus-visible {
+  outline: 3px solid #25243a;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes card-pop {
+    from { opacity: 0; transform: translateY(14px) scale(.96); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  article {
+    animation: card-pop .45s cubic-bezier(.2,.8,.2,1) both;
+  }
+}
+
+.game-status-win {
+  animation: status-win 700ms cubic-bezier(.2,.8,.2,1) both;
+  box-shadow: 4px 4px 0 #25243a, 0 0 24px rgba(255, 202, 88, .9);
+}
+
+.game-status-draw {
+  animation: status-draw 450ms ease-in-out 2;
+}
+
+.game-winning-cell {
+  animation: winning-cell 850ms ease-in-out infinite alternate;
+}
+
+.game-neon-x {
+  animation: neon-x 900ms ease-in-out infinite alternate;
+}
+
+.game-neon-o {
+  animation: neon-o 900ms ease-in-out infinite alternate;
+}
+
+.game-confetti {
+  position: absolute;
+  top: -18px;
+  width: 9px;
+  height: 14px;
+  border: 2px solid #25243a;
+  border-radius: 2px;
+  animation: confetti-fall 1.8s ease-in forwards;
+}
+
+@keyframes status-win {
+  0% { transform: scale(.75) rotate(-4deg); }
+  55% { transform: scale(1.12) rotate(2deg); }
+  100% { transform: scale(1.05) rotate(0); }
+}
+
+@keyframes status-draw {
+  50% { transform: translateX(4px) rotate(1deg); }
+}
+
+@keyframes winning-cell {
+  from { transform: scale(.96) rotate(-2deg); box-shadow: 4px 4px 0 #25243a, 0 0 8px #ffca58; }
+  to { transform: scale(1.04) rotate(2deg); box-shadow: 6px 6px 0 #25243a, 0 0 28px #ffca58; }
+}
+
+@keyframes neon-x {
+  from { box-shadow: 4px 4px 0 #25243a, 0 0 6px #ff5d82, 0 0 14px #ff5d82; }
+  to { box-shadow: 4px 4px 0 #25243a, 0 0 14px #ff5d82, 0 0 30px #ff5d82; }
+}
+
+@keyframes neon-o {
+  from { box-shadow: 4px 4px 0 #25243a, 0 0 6px #63cfff, 0 0 14px #63cfff; }
+  to { box-shadow: 4px 4px 0 #25243a, 0 0 14px #63cfff, 0 0 30px #63cfff; }
+}
+
+@keyframes confetti-fall {
+  0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(520px) rotate(540deg); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .game-status-win,
+  .game-status-draw,
+  .game-winning-cell,
+  .game-neon-x,
+  .game-neon-o,
+  .game-confetti {
+    animation: none;
+  }
+}
