@@ -21,7 +21,7 @@ const games = [
 
 export default function SinglePlayerPage() {
   return (
-    <main className="mx-auto w-[calc(100%-32px)] max-w-[1180px] py-12 sm:w-[calc(100%-48px)]">
+    <main className="mx-auto w-[calc(100%-32px)] max-w-295 py-12 sm:w-[calc(100%-48px)]">
       <Button
         asChild
         variant="default"
